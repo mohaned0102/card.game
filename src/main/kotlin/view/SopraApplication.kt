@@ -8,12 +8,12 @@ import tools.aqua.bgw.core.BoardGameApplication
 /** Einstiegspunkt der Oberfläche: verwaltet Szenen und wechselt zwischen ihnen. */
 class SopraApplication : BoardGameApplication("Exzellente Informatik-Forschung"), Refreshable {
 
-    private val rootService = RootService()
+    internal val rootService = RootService()
 
-    private val gameScene = GameScene(rootService)
-    private val startMenuScene = StartMenuScene(rootService)
-    private val turnSwitchMenuScene = TurnSwitchMenuScene()
-    private val resultMenuScene = ResultMenuScene(rootService)
+    internal val gameScene = GameScene(rootService)
+    internal val startMenuScene = StartMenuScene(rootService)
+    internal val turnSwitchMenuScene = TurnSwitchMenuScene()
+    internal val resultMenuScene = ResultMenuScene(rootService)
 
     init {
         rootService.addRefreshables(this, gameScene)

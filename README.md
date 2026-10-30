@@ -40,3 +40,13 @@ Coverage (JaCoCo) in `build/reports/jacoco/test/html/index.html`.
 | `test/.../entity/` | Entity-Klassen (Stapel, Zugwechsel, 2–4 Spieler) |
 | `test/.../service/` | Alle Aktionen, Grenzfälle, Endwertung, Spielende; `FullGameSimulationTest` spielt 30 Zufallsspiele und prüft, dass immer genau 52 Karten existieren |
 | `test/.../view/` | GUI-Tests ohne Fenster: Klicks auf Buttons per `click(...)`, danach Prüfung von Labels/Karten und Spielzustand |
+
+## Sichtbarer GUI-Test (End-to-End)
+```
+./gradlew visualTest
+./gradlew visualTest -Pdelay=800   # langsamer zuschauen
+```
+Öffnet das echte Spielfenster und spielt automatisch eine komplette Partie mit 3 Fakultäten,
+indem Buttons geklickt werden (alle 6 Aktionen, Hotseat-Wechsel, Ergebnis). Nach jedem Schritt wird
+geprüft: immer 52 Karten, Handkartenlimit, Literatur ≤ 6, Hand beim Spielerwechsel verdeckt,
+richtige*r Gewinner*in. Ergebnis in der Konsole: `✅ VISUELLER TEST BESTANDEN` (Exit-Code 0) oder `❌` (Exit-Code 1).

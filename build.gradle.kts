@@ -37,3 +37,14 @@ tasks.jacocoTestReport {
         xml.required.set(true)
     }
 }
+
+// Sichtbarer GUI-Test: öffnet das Spielfenster und spielt automatisch eine ganze Partie.
+// Langsamer zuschauen: ./gradlew visualTest -Pdelay=800
+tasks.register<JavaExec>("visualTest") {
+    group = "verification"
+    description = "Spielt eine komplette Partie sichtbar im echten Fenster."
+    classpath = sourceSets.test.get().runtimeClasspath
+    mainClass.set("view.VisualGameTestKt")
+    args((project.findProperty("delay") ?: "400").toString())
+    jvmArgs("-Dstdout.encoding=UTF-8", "-Dfile.encoding=UTF-8")
+}
